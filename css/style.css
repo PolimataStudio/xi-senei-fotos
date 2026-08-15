@@ -1,0 +1,927 @@
+/* ============================================================
+   TOKENS DE DESIGN (refinados)
+   ============================================================ */
+:root {
+  /* Cores */
+  --color-ink: #17363b;
+  --color-muted: #5d7073;
+  --color-primary: #155b63;
+  --color-primary-dark: #0d4249;
+  --color-primary-light: #1f7a84;
+  --color-accent: #d68b52;
+  --color-accent-light: #e8b28c;
+  --color-surface: #ffffff;
+  --color-background: #f4f7f5;
+  --color-border: #dce6e3;
+  --color-border-light: #eaf0ed;
+
+  /* Sombras */
+  --shadow-soft: 0 12px 35px rgba(23, 54, 59, 0.08);
+  --shadow-card: 0 4px 16px rgba(23, 54, 59, 0.06);
+  --shadow-card-hover: 0 8px 30px rgba(23, 54, 59, 0.12);
+  --shadow-lightbox: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+  /* Raios */
+  --radius-small: 0.65rem;
+  --radius-medium: 1rem;
+  --radius-large: 1.5rem;
+  --radius-full: 999px;
+
+  /* Layout */
+  --max-width: 1180px;
+  --header-height: 4.5rem;
+
+  /* Transições */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.35s ease;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--color-ink);
+  background: var(--color-background);
+  font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.is-lightbox-open {
+  overflow: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(214, 139, 82, 0.7);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   HEADER (refinado)
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-light);
+  box-shadow: 0 1px 4px rgba(23, 54, 59, 0.04);
+  transition: background var(--transition-base);
+}
+
+.header-inner {
+  width: min(calc(100% - 2rem), var(--max-width));
+  min-height: var(--header-height);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.brand:hover {
+  opacity: 0.85;
+}
+
+.brand-mark {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: var(--color-primary);
+  border-radius: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(21, 91, 99, 0.2);
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 0.98rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.brand small {
+  color: var(--color-muted);
+  font-size: 0.73rem;
+  font-weight: 400;
+}
+
+.institution {
+  max-width: 18rem;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  text-align: right;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+main {
+  width: min(calc(100% - 2rem), var(--max-width));
+  margin: 0 auto;
+}
+
+/* ============================================================
+   HERO (refinado)
+   ============================================================ */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+  align-items: end;
+  gap: 3rem;
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0 3.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.12;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+h1 {
+  max-width: 42rem;
+  margin-bottom: 0.75rem;
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+}
+
+.intro {
+  max-width: 37rem;
+  margin-bottom: 0;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.event-note {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 1.3rem 1.5rem;
+  color: var(--color-primary-dark);
+  background: rgba(21, 91, 99, 0.06);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-medium);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.5;
+  backdrop-filter: blur(4px);
+  transition: background var(--transition-base);
+}
+
+.event-note:hover {
+  background: rgba(21, 91, 99, 0.09);
+}
+
+.event-note span:first-child {
+  color: var(--color-accent);
+  font-size: 1.25rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+/* ============================================================
+   CONTROLES DA GALERIA (refinados)
+   ============================================================ */
+.gallery-controls {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: 0.5rem;
+}
+
+.selection-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+#selection-count {
+  font-weight: 500;
+  color: var(--color-ink);
+  background: rgba(21, 91, 99, 0.08);
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+}
+
+.text-button {
+  padding: 0.3rem 0.8rem;
+  color: var(--color-primary);
+  background: transparent;
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.text-button:hover {
+  background: rgba(21, 91, 99, 0.08);
+  border-color: var(--color-border-light);
+}
+
+.text-button:focus-visible {
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   FILTROS (mantidos, mas com refinamento visual)
+   ============================================================ */
+.filters {
+  margin: 0 0 2.4rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.filters::-webkit-scrollbar {
+  height: 4px;
+}
+.filters::-webkit-scrollbar-track {
+  background: transparent;
+}
+.filters::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.filter-list {
+  display: flex;
+  gap: 0.55rem;
+  width: max-content;
+  padding: 0.2rem 0;
+}
+
+.filter-button {
+  padding: 0.55rem 1.2rem;
+  color: var(--color-muted);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.filter-button:hover {
+  color: var(--color-ink);
+  background: rgba(21, 91, 99, 0.05);
+  border-color: var(--color-primary-light);
+}
+
+.filter-button.is-active {
+  color: #ffffff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(21, 91, 99, 0.2);
+}
+
+/* ============================================================
+   SEÇÃO DA GALERIA
+   ============================================================ */
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-heading .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+}
+
+.result-count {
+  margin-bottom: 0.15rem;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 400;
+  background: var(--color-surface);
+  padding: 0.25rem 0.9rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 1px 4px rgba(23, 54, 59, 0.04);
+}
+
+/* ============================================================
+   GALERIA (CARDS – principal refinamento)
+   ============================================================ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.photo-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  will-change: transform;
+}
+
+.photo-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.photo-card-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.photo-card-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #dce7e4;
+  position: relative;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow), filter var(--transition-base);
+  will-change: transform;
+}
+
+.photo-card:hover img,
+.photo-card:focus-within img {
+  transform: scale(1.04);
+  filter: brightness(1.02);
+}
+
+.photo-card-info {
+  padding: 0.85rem 0.9rem 0.9rem;
+}
+
+.photo-card-title {
+  margin: 0 0 0.15rem;
+  overflow: hidden;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   SELEÇÃO (refinada)
+   ============================================================ */
+.selection-toggle {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: rgba(23, 54, 59, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.selection-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(23, 54, 59, 0.9);
+}
+
+.selection-toggle.is-selected {
+  color: var(--color-primary-dark);
+  background: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(21, 91, 99, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================
+   ESTADOS VAZIO E CARREGAMENTO
+   ============================================================ */
+.empty-state,
+.loading-state {
+  padding: 4rem 1rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.empty-icon {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+  font-size: 2.25rem;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  margin-bottom: 0.45rem;
+  color: var(--color-ink);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.empty-state p {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  width: min(calc(100% - 2rem), var(--max-width));
+  margin: 5rem auto 0;
+  padding: 1.5rem 0 2rem;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border-light);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* ============================================================
+   LIGHTBOX (refinado – experiência de galeria profissional)
+   ============================================================ */
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  animation: lightboxFadeIn 0.25s ease;
+}
+
+@keyframes lightboxFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 29, 32, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.lightbox-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 72rem);
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  color: #ffffff;
+  background: #102d31;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-lightbox);
+  animation: lightboxSlideUp 0.3s ease;
+}
+
+@keyframes lightboxSlideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.lightbox-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lightbox-position {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.close-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: background var(--transition-fast);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.lightbox-image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 15rem;
+  background: #071b1e;
+  padding: 0.5rem;
+}
+
+.lightbox-image-wrapper img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-button {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: rgba(16, 45, 49, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
+}
+
+.navigation-button:hover:not(:disabled) {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.navigation-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.navigation-previous {
+  left: 0.75rem;
+}
+.navigation-next {
+  right: 0.75rem;
+}
+
+.lightbox-details {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 1.4rem 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lightbox-details h2 {
+  margin-bottom: 0.3rem;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.lightbox-description {
+  max-width: 40rem;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.lightbox-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.6rem;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 2.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+.primary-button {
+  color: var(--color-primary-dark);
+  background: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.primary-button:hover {
+  background: #f0f0f0;
+  transform: scale(1.02);
+}
+
+.secondary-button {
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.secondary-button.is-selected {
+  color: var(--color-primary-dark);
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+/* ============================================================
+   RESPONSIVIDADE (refinada)
+   ============================================================ */
+@media (min-width: 560px) {
+  .gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 820px) {
+  .gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+}
+
+@media (min-width: 1080px) {
+  .gallery {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+/* Mobile-first ajustes */
+@media (max-width: 700px) {
+  .header-inner {
+    min-height: 4rem;
+  }
+
+  .institution {
+    display: none;
+  }
+
+  .hero {
+    display: block;
+    padding: 2.5rem 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .event-note {
+    margin-top: 1.6rem;
+    padding: 1rem;
+    font-size: 0.82rem;
+  }
+
+  .gallery-controls {
+    display: block;
+    padding: 1rem 0;
+  }
+
+  .selection-summary {
+    margin-top: 0.5rem;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .lightbox {
+    padding: 0;
+  }
+
+  .lightbox-panel {
+    width: 100%;
+    max-height: 100vh;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .lightbox-image-wrapper img {
+    max-height: 60vh;
+  }
+
+  .lightbox-details {
+    display: block;
+    padding: 1rem;
+  }
+
+  .lightbox-actions {
+    margin-top: 1rem;
+    flex-direction: row;
+  }
+
+  .lightbox-actions > * {
+    flex: 1;
+  }
+
+  .navigation-button {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1.6rem;
+  }
+
+  .navigation-previous {
+    left: 0.4rem;
+  }
+  .navigation-next {
+    right: 0.4rem;
+  }
+}
+
+@media (max-width: 380px) {
+  main,
+  .header-inner,
+  .site-footer {
+    width: min(calc(100% - 1.25rem), var(--max-width));
+  }
+
+  .gallery {
+    gap: 0.5rem;
+  }
+
+  .photo-card-info {
+    padding: 0.5rem;
+  }
+
+  .photo-card-title {
+    font-size: 0.72rem;
+  }
+
+  .selection-toggle {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.9rem;
+    top: 0.4rem;
+    right: 0.4rem;
+  }
+}
+
+/* ============================================================
+   REDUÇÃO DE MOVIMENTO (preservado e aprimorado)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .photo-card:hover img,
+  .photo-card:focus-within img {
+    transform: none !important;
+  }
+
+  .photo-card:hover {
+    transform: none !important;
+  }
+
+  .primary-button:hover,
+  .secondary-button:hover {
+    transform: none !important;
+  }
+
+  .selection-toggle:hover {
+    transform: none !important;
+  }
+}

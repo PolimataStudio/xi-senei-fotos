@@ -1,0 +1,18 @@
+x-senei-galeria/
+├── index.html
+├── manifest.json
+├── sw.js
+├── css/
+│   └── style.css
+├── js/
+│   └── app.js
+├── data/
+│   └── photos.json
+├── images/
+│   ├── thumbs/        ← miniaturas (ex: abertura-001.webp)
+│   │   └── .gitkeep
+│   └── photos/        ← originais (ex: abertura-001.webp)
+│       └── .gitkeep
+└── icons/
+    ├── icon-192.svg
+    └── icon-512.svg

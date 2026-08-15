@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#155b63">
+  <meta name="description" content="Galeria de fotografias do XI SENEI — UFRN">
+  <title>XI SENEI | Galeria de Fotografias</title>
+
+  <!-- Google Fonts: Poppins (carregamento direto, sem @import) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    window.APP_BASE = new URL(".", document.baseURI).href;
+  </script>
+</head>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-content">
+        <p class="eyebrow">Memória, diálogo e inclusão</p>
+        <h1 id="page-title">Fotografias do XI SENEI</h1>
+        <p class="intro">
+          Encontre os registros do evento, abra uma fotografia e baixe a imagem
+          em tamanho original.
+        </p>
+      </div>
+      <div class="event-note">
+        <span aria-hidden="true">✦</span>
+        <span>Tempos e espaços no contexto da educação especial na perspectiva inclusiva</span>
+      </div>
+    </section>
+
+    <section class="gallery-controls" aria-label="Controles da galeria">
+      <div class="selection-summary" aria-live="polite">
+        <span id="selection-count">0 selecionadas</span>
+        <button id="clear-selection" class="text-button" type="button" hidden>
+          Limpar seleção
+        </button>
+      </div>
+    </section>
+
+    <section class="gallery-section" aria-labelledby="gallery-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Registros do evento</p>
+          <h2 id="gallery-title">Galeria</h2>
+        </div>
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+      </div>
+
+      <div id="gallery" class="gallery" aria-live="polite"></div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <span class="empty-icon" aria-hidden="true">⌕</span>
+        <h3>Nenhuma fotografia encontrada</h3>
+        <p>Tente recarregar a página.</p>
+      </div>
+
+      <div id="loading-state" class="loading-state">
+        Carregando fotografias…
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+    <div class="lightbox-backdrop" data-close-lightbox></div>
+    <div class="lightbox-panel">
+      <div class="lightbox-toolbar">
+        <p id="lightbox-position" class="lightbox-position"></p>
+        <button id="close-lightbox" class="close-button" type="button" aria-label="Fechar visualização">×</button>
+      </div>
+      <div class="lightbox-image-wrapper">
+        <button id="previous-photo" class="navigation-button navigation-previous" type="button" aria-label="Fotografia anterior">‹</button>
+        <img id="lightbox-image" src="" alt="">
+        <button id="next-photo" class="navigation-button navigation-next" type="button" aria-label="Próxima fotografia">›</button>
+      </div>
+      <div class="lightbox-details">
+        <div>
+          <p id="lightbox-category" class="eyebrow"></p>
+          <h2 id="lightbox-title"></h2>
+          <p id="lightbox-description" class="lightbox-description"></p>
+        </div>
+        <div class="lightbox-actions">
+          <button id="lightbox-select" class="secondary-button" type="button">Selecionar</button>
+          <button id="download-photo" class="primary-button" type="button">Baixar foto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>XI SENEI · Universidade Federal do Rio Grande do Norte · Galeria de fotografias</p>
+  </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script type="module" src="./js/app.js"></script>
+</body>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
